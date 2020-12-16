@@ -13,12 +13,16 @@ public class Customer : MonoBehaviour
 
     public bool menu = false, eating = false, order = false, isSeated = false, readyToEat = false, checkReady = false;
     public bool spawnToggle = false;
+
+    public bool isLeaving = false;
     private float maxLeaveTime = 50.0f;
     private float maxMenuTime = 60.0f;
     private float maxEatTime = 60.0f;
     private float leaveTimer = 5.0f;
     private float menuTimer = 1.0f;
     private float eatTimer = 10.0f;
+
+    public int tableNum;
     bool destroyed = false;
     private Text leaveTimerText;
     private Image leaveTimerBar;
@@ -32,6 +36,8 @@ public class Customer : MonoBehaviour
     private Image eatTimerBar;
     private Image eatTimerBack;
 
+    private Image custLeaving;
+    private Image custOrder;
     private Image custFinished;
 	
 	private AudioSource CustomerReadytoOrder;
@@ -61,6 +67,8 @@ public class Customer : MonoBehaviour
         eatTimerBack = transform.Find("Canvas").Find("Background").Find("eatImage").GetComponent<Image>();
 
         custFinished = transform.Find("Canvas").Find("Background").Find("CustFin").GetComponent<Image>();
+        custLeaving = transform.Find("Canvas").Find("Background").Find("CustMad").GetComponent<Image>();
+        custOrder = transform.Find("Canvas").Find("Background").Find("CustOrder").GetComponent<Image>();
 
         if (leaveTimerText.gameObject.activeSelf == false){
             leaveToggle();
@@ -72,6 +80,8 @@ public class Customer : MonoBehaviour
         eatTimerBar.gameObject.SetActive(false);
         eatTimerBack.gameObject.SetActive(false);
         custFinished.gameObject.SetActive(false);
+        custOrder.gameObject.SetActive(false);
+        custLeaving.gameObject.SetActive(false);
 		
         //for Sounds
 		CustomerReadytoOrder = GetComponents<AudioSource>()[0];
@@ -102,7 +112,7 @@ public class Customer : MonoBehaviour
 
             if (menuTimer <= 0){
                 menu = false;
-                custFinished.gameObject.SetActive(true);
+                custOrder.gameObject.SetActive(true);
                 order = true;
                 //CUSTOMER READY TO ORDER SOUND
 				CustomerReadytoOrder.Play();
@@ -111,8 +121,8 @@ public class Customer : MonoBehaviour
             }
         }
 
-        if (readyToEat == true && custFinished.gameObject.activeSelf == true){
-            custFinished.gameObject.SetActive(false);
+        if (readyToEat == true && custOrder.gameObject.activeSelf == true){
+            custOrder.gameObject.SetActive(false);
         }
         
         if (eating == true){
@@ -143,9 +153,10 @@ public class Customer : MonoBehaviour
         }
 
         if (leaveTimer <= 0){
-            if (destroyed == false){
+            if (destroyed == false && isLeaving == false){
                 Debug.Log("exit");
                 CustomerUnhappy.Play();
+                custLeaving.gameObject.SetActive(true);
                 badLeave.Invoke();
                 Destroy(gameObject, CustomerUnhappy.clip.length);   
                 destroyed = true;
@@ -191,5 +202,19 @@ public class Customer : MonoBehaviour
             eatTimerBar.gameObject.SetActive(true);
             eatTimerBack.gameObject.SetActive(true);
         }
+    }
+
+    public void setTimers(int groupNum){
+        maxLeaveTime = 50.0f + (5.0f * groupNum);
+
+        leaveTimer = maxLeaveTime;
+        eatTimer = UnityEngine.Random.Range((10 * groupNum), (15 * groupNum));
+        maxEatTime = eatTimer;
+        menuTimer = UnityEngine.Random.Range((5 * groupNum), (10 * groupNum));
+        maxMenuTime = menuTimer;
+    }
+
+    public void setTableNum(int newTableNum){
+        tableNum = newTableNum;
     }
 }

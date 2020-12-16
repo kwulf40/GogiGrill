@@ -12,7 +12,7 @@ public class GameLogic : MonoBehaviour
     public UnityEngine.Events.UnityEvent callSpawn;
 
     private int maxLostCount = 3, maxHappyCount = 5;
-
+    private SceneHistory hist;
     private Text goodCount;
     private Text maxGoodCount;
     private Text badCount;
@@ -22,6 +22,7 @@ public class GameLogic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hist = GameObject.Find("SceneHistory").GetComponent<SceneHistory>();
         badLeaveCount = 0;
         goodLeaveCount = 0;
         customerCount = 0;
@@ -52,11 +53,11 @@ public class GameLogic : MonoBehaviour
 
         if(badLeaveCount == maxLostCount){
             Debug.Log("End Game, lose.");
-            SceneManager.LoadScene("Lose");
+            hist.LoadScene("Lose");
         }
         if(goodLeaveCount == maxHappyCount){
             Debug.Log("Good Job!");
-            SceneManager.LoadScene("Win");
+            hist.LoadScene("LevelComplete");
         }
         if (spawningCheck == false && customerCount < 4){
             spawnCheck();

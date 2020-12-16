@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 8409772233920991024}
   - component: {fileID: 8409772233920991025}
   m_Layer: 0
-  m_Name: RIght
+  m_Name: Right Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -311,7 +311,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8409772233920991022}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 25.910002, y: 4.364, z: -24.831146}
   m_LocalScale: {x: 20.362226, y: 15, z: 1}
   m_Children:
@@ -382,8 +382,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.3327224}
+  m_Center: {x: -6.052056e-17, y: 0, z: -0.16636115}
 --- !u!1 &8409772234790352500
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,5 +477,5 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 1.7111813}
+  m_Center: {x: -1.4135233e-16, y: 0, z: -0.3555907}
