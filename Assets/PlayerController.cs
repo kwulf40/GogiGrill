@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 	private AudioSource pickUp2;
 	private AudioSource playerDroppingItem;
 	private AudioSource seatingSound;
+	private AudioSource phonePickup;
 
     void Start()
     {
@@ -45,6 +46,7 @@ public class PlayerController : MonoBehaviour
 		pickUp2 = GetComponents<AudioSource>()[1];
 		playerDroppingItem = GetComponents<AudioSource>()[2];
 		seatingSound = GetComponents<AudioSource>()[3];
+		phonePickup = GetComponents<AudioSource>()[4];
     }
 
     // Update is called once per frame
@@ -173,6 +175,7 @@ public class PlayerController : MonoBehaviour
                     if (phone.ringing == true){
                         Debug.Log("Pickup Phone");
                         //Audio call here -> callAudio.Play();
+						phonePickup.Play();
                         phone.pickup();
                         generateOrder();
                         Debug.Log("Generate mobile menu");
