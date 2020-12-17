@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ToGoOrder : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ToGoOrder : MonoBehaviour
     private float currentRingTime = 10.0f;
     private float maxCustArriveTime = 10.0f;
     private float currentCustArriveTime = 10.0f;
+
+    private bool loopTog = false;
 
     public bool ringing = false;
 
@@ -21,13 +24,23 @@ public class ToGoOrder : MonoBehaviour
 	
 	private AudioSource phoneRing;
 	private AudioSource customerUnhappy;
+
+    private Image alert;
+    
     // Start is called before the first frame update
     void Start()
     {
         tablet = this.gameObject;
-		
+		alert = transform.Find("Canvas").Find("PhoneAlert").GetComponent<Image>();
+        alert.gameObject.SetActive(false);
 		customerUnhappy = GetComponents<AudioSource>()[0];
 		phoneRing = GetComponents<AudioSource>()[1];
+    }
+
+    void Awake()
+    {
+
+
     }
 
     // Update is called once per frame
@@ -36,13 +49,20 @@ public class ToGoOrder : MonoBehaviour
         if (ringing == true){
             tablet.GetComponent<MeshRenderer>().material = ringMat;
             currentRingTime = currentRingTime - Time.deltaTime;
+            alert.gameObject.SetActive(true);
             //Phone ring sound here for maxRingTime duration
-			phoneRing.Play();
+            if (loopTog == false){
+                phoneRing.Play();
+			    loopTog = true;
+            }
         }
         if (currentRingTime <= 0.0f){
             tablet.GetComponent<MeshRenderer>().material = idleMat;
             ringing = false;
+            alert.gameObject.SetActive(false);
             currentRingTime = maxRingTime;
+            loopTog = false;
+            phoneRing.Stop();
             //bad leave sound
 			customerUnhappy.Play();
             badLeave.Invoke();
@@ -56,6 +76,7 @@ public class ToGoOrder : MonoBehaviour
                 customerArriving = false;
             }
         }
+        phoneRing.loop = loopTog;
     }
 
     public void ring(){
@@ -64,6 +85,7 @@ public class ToGoOrder : MonoBehaviour
 
     public void pickup(){
         ringing = false;
+        alert.gameObject.SetActive(false);
         customerArriving = true;
         currentRingTime = maxRingTime;
         tablet.GetComponent<MeshRenderer>().material = idleMat;   

@@ -1,3 +1,4 @@
+using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,7 +40,11 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         tableList = GameObject.FindGameObjectsWithTag("Table");
-        tableNumber = UnityEngine.Random.Range(0, 16);
+        for (int i = 1; i <= 16; i++){//for sorting table list
+            string temp = "Table " + i.ToString();
+            tableList[i - 1] = GameObject.Find(temp);
+        }
+        tableNumber = UnityEngine.Random.Range(0, 15);
     
 		//for sounds
 		pickUp1 = GetComponents<AudioSource>()[0];
@@ -139,6 +144,7 @@ public class PlayerController : MonoBehaviour
                         Debug.Log("Order");
                         if (heldItem){
                             heldItem.tableNum = checkCust.tableNum;
+                            Debug.Log(checkCust.tableNum.ToString());
                         }
                         checkCust.order = false;
                         checkCust.readyToEat = true;
