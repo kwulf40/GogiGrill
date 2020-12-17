@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,10 +18,16 @@ public class ToGoOrder : MonoBehaviour
     public Material ringMat;
 
     private GameObject tablet;
+	
+	private AudioSource phoneRing;
+	private AudioSource customerUnhappy;
     // Start is called before the first frame update
     void Start()
     {
         tablet = this.gameObject;
+		
+		phoneRing = GetComponents<AudioSource>()[0];
+		customerUnhappy = GetComponents<AudioSource>()[1];
     }
 
     // Update is called once per frame
@@ -31,12 +37,14 @@ public class ToGoOrder : MonoBehaviour
             tablet.GetComponent<MeshRenderer>().material = ringMat;
             currentRingTime = currentRingTime - Time.deltaTime;
             //Phone ring sound here for maxRingTime duration
+			phoneRing.Play();
         }
         if (currentRingTime <= 0.0f){
             tablet.GetComponent<MeshRenderer>().material = idleMat;
             ringing = false;
             currentRingTime = maxRingTime;
             //bad leave sound
+			customerUnhappy.Play();
             badLeave.Invoke();
         }
 
