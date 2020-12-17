@@ -26,8 +26,8 @@ public class ToGoOrder : MonoBehaviour
     {
         tablet = this.gameObject;
 		
-		phoneRing = GetComponents<AudioSource>()[0];
-		customerUnhappy = GetComponents<AudioSource>()[1];
+		customerUnhappy = GetComponents<AudioSource>()[0];
+		phoneRing = GetComponents<AudioSource>()[1];
     }
 
     // Update is called once per frame

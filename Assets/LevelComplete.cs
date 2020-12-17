@@ -11,6 +11,7 @@ public class LevelComplete : MonoBehaviour
     private int origin_x;
     private int origin_y;
     // Start is called before the first frame update
+    private AudioSource winLevel;
     void Start()
     {
         hist = GameObject.Find("SceneHistory").GetComponent<SceneHistory>();
@@ -18,6 +19,8 @@ public class LevelComplete : MonoBehaviour
         buttonHeight = 50;
         origin_x = (Screen.width - (Screen.width / 5)) - buttonWidth / 2;
         origin_y = Screen.height / 2 - buttonHeight * 2;
+        winLevel = GetComponents<AudioSource>()[0];
+        winLevel.Play();
     }
 
     // Update is called once per frame

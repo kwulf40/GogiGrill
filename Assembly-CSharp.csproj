@@ -46,13 +46,12 @@
      <Compile Include="Assets\StartMenu.cs" />
      <Compile Include="Assets\Kitchen.cs" />
      <Compile Include="Assets\LevelComplete.cs" />
-     <Compile Include="Assets\PlayerController.cs" />
+     <Compile Include="Assets\Quirky Series\Arctic\Polar Bear\Demo\_Scripts\Demo.cs" />
      <Compile Include="Assets\Cute Chubby Pig\ChangeCharacter.cs" />
      <Compile Include="Assets\ToGoOrder.cs" />
      <Compile Include="Assets\GameLogic.cs" />
      <Compile Include="Assets\Table.cs" />
      <Compile Include="Assets\SceneHistory.cs" />
-     <Compile Include="Assets\Quirky Series\Arctic\Polar Bear\Demo\_Scripts\Demo.cs" />
      <None Include="Assets\Quirky Series\Arctic\Polar Bear\Demo\_Shader\SoftSurface.shader" />
      <None Include="Assets\Christmas Scene\Documentation.txt" />
      <None Include="Assets\AllSkyFree\AllSkyFree_Readme.txt" />
