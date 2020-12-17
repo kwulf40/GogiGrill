@@ -11,6 +11,8 @@ public class Kitchen : MonoBehaviour
 
     public Item FoodItem;
 
+    public Item mobileFoodItem;
+
     public int tableNum;
 
     private Text cookTime;
@@ -46,10 +48,14 @@ public class Kitchen : MonoBehaviour
             }
 
             cookTime.text = Math.Round(cookTimer).ToString();
-            dispTable.text = "Cooking table: " + tableNum.ToString();
-
+            if (tableNum != 0451){
+                dispTable.text = "Cooking table: " + tableNum.ToString();
+            }
+            else {
+                dispTable.text = "Cooking Mobile";
+            }
            
-            if (cookTimer <= 0){
+            if (cookTimer <= 0 && tableNum != 0451){
                 cooking = false;
                 cookTime.gameObject.SetActive(false);
                 dispTable.gameObject.SetActive(false);
@@ -57,8 +63,22 @@ public class Kitchen : MonoBehaviour
                 newFood.gameObject.transform.position = new Vector3(25, 8, 1);
                 newFood.tableNum = tableNum;
                 cookTimer = 10.0f;
-                //FOOD READY SOUND GOES HERE
 				foodReadySound.Play();
+            }
+
+            else if (cookTimer <= 0 && tableNum == 0451){
+                cooking = false;
+                cookTime.gameObject.SetActive(false);
+                dispTable.gameObject.SetActive(false);
+                Item mobileFood = (Item) Instantiate(mobileFoodItem, transform.position, transform.rotation);
+                mobileFood.gameObject.transform.Rotate(new Vector3(90, 0, 0));
+                mobileFood.gameObject.transform.position = new Vector3(25, 8, 5);
+                mobileFood.tableNum = tableNum;
+                cookTimer = 10.0f;
+				foodReadySound.Play();
+            }
+            else {
+                return;
             }
         }
     }

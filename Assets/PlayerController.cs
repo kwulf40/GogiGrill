@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
             customerSeat(objects);
             customerOrder(objects);
             customerCheck(objects);
+            pickupPhone(objects);
         }
 
         if (Input.GetKeyDown(KeyCode.L)){
@@ -104,7 +105,7 @@ public class PlayerController : MonoBehaviour
             }
         else{
             foreach(Collider newObject in objects){
-                if (newObject.tag == "Food" || newObject.tag == "Menu"){
+                if (newObject.tag == "Food" || newObject.tag == "Menu" || newObject.tag == "ToGoOrder"){
                     if(newObject.gameObject.GetComponent<Item>()){
                         Item newItem = newObject.GetComponent<Item>();
                         Pickup(newItem);
@@ -163,12 +164,32 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void pickupPhone(Collider[] objects){
+        foreach(Collider newObject in objects){
+            if (newObject.tag == "ToGo"){
+                if(newObject.gameObject.GetComponent<ToGoOrder>()){
+                    ToGoOrder phone = newObject.gameObject.GetComponent<ToGoOrder>();
+                    //Phone Pickup noise here -> AudioSource callAudio = newObject.gameObject.GetComponents<AudioSource>()[];
+                    if (phone.ringing == true){
+                        Debug.Log("Pickup Phone");
+                        //Audio call here -> callAudio.Play();
+                        phone.pickup();
+                        generateOrder();
+                        Debug.Log("Generate mobile menu");
+                        if(heldItem){
+                            heldItem.tableNum = 0451;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
     public void generateOrder(){
         Item menu = (Item) Instantiate(MenuItem, itemSlot.position, itemSlot.rotation);
         menu.gameObject.transform.Rotate(new Vector3(90,180,0));
         Pickup(menu);
         Debug.Log("Menu");
-        //PLAYER PICKUP SOUND GOES HERE
 		pickUp1.Play();
     }
 
@@ -212,6 +233,7 @@ public class PlayerController : MonoBehaviour
             if (chair.transform.childCount == 0){
                 cust.transform.SetParent(chair.transform);
                 cust.transform.position = new Vector3 (chair.transform.position.x, chair.transform.position.y + 2, chair.transform.position.z);
+                cust.increaseLeave(10.0f);
 
                 if (cust.transform.childCount > 1){
                     for (int j = 1; j < cust.transform.childCount; j++){

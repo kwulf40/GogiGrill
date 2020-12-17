@@ -114,7 +114,6 @@ public class Customer : MonoBehaviour
                 menu = false;
                 custOrder.gameObject.SetActive(true);
                 order = true;
-                //CUSTOMER READY TO ORDER SOUND
 				CustomerReadytoOrder.Play();
                 menuToggle();
                 leaveToggle();
@@ -158,9 +157,25 @@ public class Customer : MonoBehaviour
                 CustomerUnhappy.Play();
                 custLeaving.gameObject.SetActive(true);
                 badLeave.Invoke();
+                GameObject[] food = GameObject.FindGameObjectsWithTag("Food");
+                GameObject[] menus = GameObject.FindGameObjectsWithTag("Menu");
+                for (int i = 0; i < food.Length; i++){
+                    if(food[i].GetComponent<Item>().tableNum == this.tableNum){
+                        Destroy(food[i].gameObject);
+                    }
+                }
+                for (int i = 0; i < menus.Length; i++){
+                    if(menus[i].GetComponent<Item>().tableNum == this.tableNum){
+                        Destroy(menus[i].gameObject);
+                    }
+                }
                 Destroy(gameObject, CustomerUnhappy.clip.length);   
                 destroyed = true;
             }
+        }
+
+        if (leaveTimer > maxLeaveTime){
+            leaveTimer = maxLeaveTime;
         }
 
     }
@@ -216,5 +231,9 @@ public class Customer : MonoBehaviour
 
     public void setTableNum(int newTableNum){
         tableNum = newTableNum;
+    }
+
+    public void increaseLeave (float time){
+        leaveTimer = leaveTimer + time;
     }
 }

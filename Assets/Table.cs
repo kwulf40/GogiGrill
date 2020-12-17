@@ -28,6 +28,7 @@ public class Table : MonoBehaviour
                     Destroy(col.gameObject);
                     temp.readyToEat = false;
                     temp.eating = true;
+                    temp.increaseLeave(10.0f);
                     //CUSTOMER RECIEVING FOOD SOUND GOES HERE
 					recieveFood.Play();
                 }

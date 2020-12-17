@@ -63,7 +63,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.49803922, b: 0.4745098, a: 1}
+  m_Color: {r: 0.65882355, g: 0.20392157, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.49929872, b: 0.4764151, a: 1}
+  m_Color: {r: 0.65882355, g: 0.20392157, b: 0.19607843, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1057,6 +1057,7 @@ MonoBehaviour:
   badLeaveCount: 0
   goodLeaveCount: 0
   customerCount: 0
+  maxCustomerCount: 4
   spawningCheck: 1
   waitTime: 5
   callSpawn:

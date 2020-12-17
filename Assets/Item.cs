@@ -33,7 +33,12 @@ public class Item : MonoBehaviour
         look.x = look.z = 0.0f;
         itemCanv.transform.LookAt(mainCam.transform.position - look);
         itemCanv.transform.Rotate(40,180,0);
-        tableText.text = tableNum.ToString();
+        if (tableNum == 0451){
+            tableText.text = "Mobile";
+        }
+        else{
+            tableText.text = tableNum.ToString();
+        }
         wallCheck(objects);
     }
 

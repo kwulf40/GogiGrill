@@ -9,6 +9,8 @@ TagManager:
   - Customer
   - Menu
   - Wall
+  - ToGo
+  - ToGoOrder
   layers:
   - Default
   - TransparentFX

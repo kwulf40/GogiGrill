@@ -44,15 +44,17 @@
      <Compile Include="Assets\Item.cs" />
      <Compile Include="Assets\StartMenu.cs" />
      <Compile Include="Assets\Kitchen.cs" />
+     <Compile Include="Assets\LevelComplete.cs" />
      <Compile Include="Assets\PlayerController.cs" />
      <Compile Include="Assets\Cute Chubby Pig\ChangeCharacter.cs" />
      <Compile Include="Assets\GameLogic.cs" />
      <Compile Include="Assets\Table.cs" />
      <Compile Include="Assets\SceneHistory.cs" />
-     <Compile Include="Assets\LevelComplete.cs" />
+     <Compile Include="Assets\ToGoOrder.cs" />
+     <Compile Include="Assets\PickupWindow.cs" />
+     <None Include="Assets\Christmas Scene\Documentation.txt" />
      <None Include="Assets\AllSkyFree\AllSkyFree_Readme.txt" />
      <None Include="Assets\Table and chair\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
-     <None Include="Assets\hitori_yubin_soundpack\yubin_readme.txt" />
     <Reference Include="UnityEngine">
         <HintPath>F:/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
