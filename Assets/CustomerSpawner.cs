@@ -42,10 +42,6 @@ public class CustomerSpawner : MonoBehaviour
             
             newCust.setTimers(numOfCust);
         }
-
-        
-
-        //CUSTOMER ARRIVAL SOUND GOES HERE
 		CustomerArrive.Play();
     }
     public void SpawnMobile(){
@@ -54,5 +50,6 @@ public class CustomerSpawner : MonoBehaviour
         newMobCust.transform.SetParent(PickupWindow.transform);
         newMobCust.transform.position = new Vector3(PickupWindow.transform.position.x, PickupWindow.transform.position.y + 4, PickupWindow.transform.position.z + 1);
         newMobCust.transform.Rotate(new Vector3(0,180,0));
+        CustomerArrive.Play();
     }
 }

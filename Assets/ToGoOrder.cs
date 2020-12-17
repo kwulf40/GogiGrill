@@ -30,11 +30,13 @@ public class ToGoOrder : MonoBehaviour
         if (ringing == true){
             tablet.GetComponent<MeshRenderer>().material = ringMat;
             currentRingTime = currentRingTime - Time.deltaTime;
+            //Phone ring sound here for maxRingTime duration
         }
         if (currentRingTime <= 0.0f){
             tablet.GetComponent<MeshRenderer>().material = idleMat;
             ringing = false;
             currentRingTime = maxRingTime;
+            //bad leave sound
             badLeave.Invoke();
         }
 
