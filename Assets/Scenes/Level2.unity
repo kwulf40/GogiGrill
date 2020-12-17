@@ -7616,6 +7616,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4230751089454291310, guid: 655e8fedf9a8a7447816c4b1111939d4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 16cb512cb0149e644a3e5929b3266a44, type: 2}
     - target: {fileID: 4243153626061825596, guid: 655e8fedf9a8a7447816c4b1111939d4, type: 3}
       propertyPath: m_Name
       value: ToGoTablet

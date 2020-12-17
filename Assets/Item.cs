@@ -17,16 +17,22 @@ public class Item : MonoBehaviour
     public int tableNum;
     public float range = 1;
     public Camera mainCam;
-
+    private Vector3 defaultScale;
     private Text tableText;
     private Canvas itemCanv;
     void Awake(){
+        defaultScale = transform.localScale;
         rb = GetComponent<Rigidbody>();
         tableText = transform.Find("Canvas").Find("Number").GetComponent<Text>();
         itemCanv = transform.Find("Canvas").GetComponent<Canvas>();
     }
 
     void Update(){
+        if (transform.parent == null){
+        if (transform.localScale.x != defaultScale.x || transform.localScale.y > defaultScale.y || transform.localScale.z > defaultScale.z ){
+            transform.localScale = defaultScale;
+        }
+        }
         Vector3 look = mainCam.transform.position - transform.position;
         Collider[] objects = Physics.OverlapSphere(transform.position, range);
 
