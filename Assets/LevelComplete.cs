@@ -29,7 +29,7 @@ public class LevelComplete : MonoBehaviour
         
     }
 
-     void OnGUI()
+    void OnGUI()
     {
 
         if(GUI.Button(new Rect(origin_x, origin_y, buttonWidth, buttonHeight), "Next Level")){

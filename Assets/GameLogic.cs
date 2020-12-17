@@ -24,7 +24,6 @@ public class GameLogic : MonoBehaviour
     private Text maxGoodCount;
     private Text badCount;
     private Text maxBadCount;
-
 	
     // Start is called before the first frame update
     void Start()

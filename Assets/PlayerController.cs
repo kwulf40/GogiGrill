@@ -2,6 +2,7 @@ using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 
@@ -18,7 +19,11 @@ public class PlayerController : MonoBehaviour
 
     private Item heldItem = null;
 
+    private Image pauseMenu;
+
     private int tableNumber = 0;
+
+    private bool pauseToggle = false;
 
     public float speed = 20.0f;
     public float gravity = 9.8f;
@@ -29,7 +34,17 @@ public class PlayerController : MonoBehaviour
     private Collider newObject;
 
     public Item MenuItem;
-	
+
+    //Scene Controller
+    private SceneHistory hist;
+
+    //GUI
+    public int buttonWidth;
+    public int buttonHeight;
+    private int origin_x;
+    private int origin_y;
+
+	//Audio
 	private AudioSource pickUp1;
 	private AudioSource pickUp2;
 	private AudioSource playerDroppingItem;
@@ -39,12 +54,23 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        pauseMenu = transform.Find("PauseMenu").Find("Image").GetComponent<Image>();
+        pauseMenu.gameObject.SetActive(false);
         tableList = GameObject.FindGameObjectsWithTag("Table");
         for (int i = 1; i <= 16; i++){//for sorting table list
             string temp = "Table " + i.ToString();
             tableList[i - 1] = GameObject.Find(temp);
         }
         tableNumber = UnityEngine.Random.Range(0, 15);
+
+        //Scene Controller
+        hist = GameObject.Find("SceneHistory").GetComponent<SceneHistory>();
+
+        //for GUI
+        buttonWidth = 200;
+        buttonHeight = 50;
+        origin_x = (Screen.width / 2 - buttonWidth / 2) - 25;
+        origin_y = Screen.height / 2 - buttonHeight * 2;
     
 		//for sounds
 		pickUp1 = GetComponents<AudioSource>()[0];
@@ -83,7 +109,45 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P)){
             goodLeave.Invoke();
         }
+        if (Input.GetKeyDown(KeyCode.Escape)){
+            if (pauseToggle == true){
+                pauseToggle = false;
+            }
+            else {
+                pauseToggle = true;
+            }
+        }
+        if (pauseToggle == true){
+            Time.timeScale = 0;
+            pauseMenu.gameObject.SetActive(true);
+        }
+        else {
+            Time.timeScale = 1;
+            pauseMenu.gameObject.SetActive(false);
+        }
 
+    }
+
+    void OnGUI(){
+        if (pauseToggle == true){
+            Debug.Log("Pause");
+            if(GUI.Button(new Rect(origin_x, origin_y, buttonWidth, buttonHeight), "Resume")){
+                pauseToggle = false;
+            }
+
+
+            if(GUI.Button(new Rect(origin_x, origin_y + buttonHeight + 20, buttonWidth, buttonHeight), "Main Menu")){
+                hist.LoadScene("StartMenu");
+            }
+
+            if(GUI.Button(new Rect(origin_x, origin_y + (2 * buttonHeight) + 40, buttonWidth, buttonHeight), "Quit")){
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #else
+                    Application.Quit();
+                #endif
+            }
+        }
     }
 
     void charMove(){
