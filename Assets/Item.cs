@@ -15,7 +15,7 @@ public class Item : MonoBehaviour
 
     public bool isHeld = false;
     public int tableNum;
-    public float range = 1;
+    public float range = 0.001f;
     public Camera mainCam;
     private Vector3 defaultScale;
     private Text tableText;
@@ -34,7 +34,7 @@ public class Item : MonoBehaviour
         }
         }
         Vector3 look = mainCam.transform.position - transform.position;
-        Collider[] objects = Physics.OverlapSphere(transform.position, range);
+        Collider[] objects = Physics.OverlapBox(transform.position, new Vector3(range,range,range));
 
         look.x = look.z = 0.0f;
         itemCanv.transform.LookAt(mainCam.transform.position - look);

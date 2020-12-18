@@ -60,7 +60,7 @@ public class Kitchen : MonoBehaviour
                 cookTime.gameObject.SetActive(false);
                 dispTable.gameObject.SetActive(false);
                 Item newFood = (Item) Instantiate(FoodItem, transform.position, transform.rotation);
-                newFood.gameObject.transform.position = new Vector3(25, 8, 1);
+                newFood.gameObject.transform.position = new Vector3(27.5f, 6.8f, 1.2f);
                 newFood.tableNum = tableNum;
                 cookTimer = 10.0f;
 				foodReadySound.Play();

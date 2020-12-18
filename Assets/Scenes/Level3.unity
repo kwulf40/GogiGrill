@@ -1303,6 +1303,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -3.18
       objectReference: {fileID: 0}
+    - target: {fileID: 8148361509886666143, guid: b6233a8e4774e0c43be8878742c5d079, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 8148361509934042142, guid: b6233a8e4774e0c43be8878742c5d079, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -7621,7 +7625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooking: 0
   cookTimer: 10
-  FoodItem: {fileID: 4611081341360806824, guid: edd4735ebcb168243b71ef865242dee7, type: 3}
+  FoodItem: {fileID: 8099767744523482363, guid: 0b89938d28ec9e149a65f5697952a9cd, type: 3}
   mobileFoodItem: {fileID: 5275106255871528528, guid: 4ba896df845a10b4686e2fdf3a1cc649, type: 3}
   tableNum: 0
 --- !u!65 &2103346079
@@ -7635,8 +7639,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.6263008, y: 3.1001625, z: 8.620595}
-  m_Center: {x: 0.8131504, y: -1.0500813, z: -3.8102975}
+  m_Size: {x: 2.6263008, y: 1.6211681, z: 8.620595}
+  m_Center: {x: 0.8131504, y: -1.789579, z: -3.8102977}
 --- !u!224 &2103346080
 RectTransform:
   m_ObjectHideFlags: 0
