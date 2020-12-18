@@ -27,6 +27,9 @@ public class GameLogic : MonoBehaviour
     private Text maxGoodCount;
     private Text badCount;
     private Text maxBadCount;
+    private Text level3Text;
+    private Text happyText;
+    private Text divider;
 	
     // Start is called before the first frame update
     void Start()
@@ -48,6 +51,12 @@ public class GameLogic : MonoBehaviour
         maxGoodCount = transform.Find("Canvas").Find("background1").Find("maxHappyCount").GetComponent<Text>();
         maxBadCount = transform.Find("Canvas").Find("background2").Find("maxLostCount").GetComponent<Text>();
 
+        happyText = transform.Find("Canvas").Find("background1").Find("happyText").GetComponent<Text>();;
+        divider = transform.Find("Canvas").Find("background1").Find("Divider").GetComponent<Text>();;
+
+        level3Text = transform.Find("Canvas").Find("background1").Find("Level3Text").GetComponent<Text>();
+        level3Text.gameObject.SetActive(false);
+
         if (currentScene.name == "Level2"){
             tablet = GameObject.Find("ToGoTablet").GetComponent<ToGoOrder>();
 
@@ -61,6 +70,13 @@ public class GameLogic : MonoBehaviour
             maxLostCount = 5;
             maxHappyCount = 100;
             maxCustomerCount = 6;
+
+            happyText.gameObject.SetActive(false);
+            divider.gameObject.SetActive(false);
+            maxGoodCount.gameObject.SetActive(false);
+            goodCount.gameObject.SetActive(false);
+            level3Text.gameObject.SetActive(true);
+
         }
 
 	}

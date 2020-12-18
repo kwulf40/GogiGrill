@@ -1,21 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Table : MonoBehaviour
 {
 	private AudioSource recieveFood;
+
+    private Image criticNotif;
 	
     // Start is called before the first frame update
     void Start()
     {
         recieveFood = GetComponents<AudioSource>()[0];
+        criticNotif = transform.Find("CriticCanv").GetChild(0).GetComponent<Image>();
+        criticNotif.gameObject.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (transform.Find("Chair 1").Find("Seat").childCount > 0){
+            if (transform.Find("Chair 1").Find("Seat").GetChild(0).name == "Fuzzypaws(Clone)" && criticNotif.gameObject.activeSelf == false){
+                criticNotif.gameObject.SetActive(true);
+            }
+        }
     }
 
     void OnCollisionEnter(Collision col){
