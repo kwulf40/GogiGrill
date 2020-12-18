@@ -175,6 +175,7 @@ public class GameLogic : MonoBehaviour
                 yield return new WaitForSeconds(waitTime);
                 waitTime = UnityEngine.Random.Range(4, 7);
                 callSpawn.Invoke();
+                Debug.Log("1");
                 customerCount++;
                 spawningCheck = false;
                 yield return null;

@@ -43,7 +43,7 @@ public class CustomerSpawner : MonoBehaviour
         numOfCust = Random.Range(0, 4);
 
         Customer newCust = (Customer) Instantiate(newCustomer[custType], transform.position, transform.rotation);
-        //newCust.transform.SetParent(transform);
+        newCust.transform.SetParent(transform);
         
         if (numOfCust > 0){
             for (int i = 0; i < numOfCust; i++){

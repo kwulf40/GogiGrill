@@ -1,6 +1,7 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - Critic
     - Customer
     - CustomerSpawner
     - ExitGame
@@ -20,8 +21,6 @@ ScriptsOnlyBuild:
     - UnityEditor.U2D.Animation.BoneGizmo
     Unity.2D.Tilemap.Editor.dll:
     - UnityEditor.Tilemaps.GridPaintingState
-    - UnityEditor.Tilemaps.GridPaletteBrushes
-    - UnityEditor.Tilemaps.GridPalettes
     - UnityEditor.Tilemaps.SceneViewGridManager
     - UnityEditor.Tilemaps.TileDragAndDropManager
     Unity.Rider.Editor.dll:
@@ -73,6 +72,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
     - Class: 104
@@ -88,7 +89,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 12112}
     - Class: 114
@@ -100,7 +101,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13134}
     - Class: 114
-      Script: {instanceID: 14356}
+      Script: {instanceID: 13824}
+    - Class: 114
+      Script: {instanceID: 14358}
     - Class: 114
       Script: {instanceID: 14652}
     - Class: 114
@@ -164,6 +167,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
     - Class: 104
@@ -179,7 +184,7 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 12112}
     - Class: 114
@@ -193,7 +198,9 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13134}
     - Class: 114
-      Script: {instanceID: 14356}
+      Script: {instanceID: 13824}
+    - Class: 114
+      Script: {instanceID: 14358}
     - Class: 114
       Script: {instanceID: 14592}
     - Class: 114
@@ -259,6 +266,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 90
       Script: {instanceID: 0}
+    - Class: 91
+      Script: {instanceID: 0}
     - Class: 95
       Script: {instanceID: 0}
     - Class: 104
@@ -274,11 +283,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11726}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 12112}
     - Class: 114
       Script: {instanceID: 12154}
+    - Class: 114
+      Script: {instanceID: 12674}
     - Class: 114
       Script: {instanceID: 12816}
     - Class: 114
@@ -286,7 +297,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 13134}
     - Class: 114
-      Script: {instanceID: 14356}
+      Script: {instanceID: 13824}
+    - Class: 114
+      Script: {instanceID: 14358}
+    - Class: 114
+      Script: {instanceID: 14592}
     - Class: 114
       Script: {instanceID: 14652}
     - Class: 114
@@ -333,9 +348,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11722}
+      Script: {instanceID: 11724}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 12112}
     - Class: 114
@@ -372,9 +387,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11722}
+      Script: {instanceID: 11724}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 12112}
     - Class: 114
@@ -402,7 +417,11 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 20
       Script: {instanceID: 0}
+    - Class: 21
+      Script: {instanceID: 0}
     - Class: 28
+      Script: {instanceID: 0}
+    - Class: 48
       Script: {instanceID: 0}
     - Class: 81
       Script: {instanceID: 0}
@@ -413,17 +432,13 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11722}
+      Script: {instanceID: 11724}
     - Class: 114
-      Script: {instanceID: 11726}
-    - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 12112}
     - Class: 114
       Script: {instanceID: 12982}
-    - Class: 114
-      Script: {instanceID: 15072}
     - Class: 114
       Script: {instanceID: 15170}
     - Class: 115
@@ -458,9 +473,9 @@ ScriptsOnlyBuild:
     - Class: 104
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 11722}
+      Script: {instanceID: 11724}
     - Class: 114
-      Script: {instanceID: 11752}
+      Script: {instanceID: 11728}
     - Class: 114
       Script: {instanceID: 12112}
     - Class: 114
@@ -484,16 +499,16 @@ ScriptsOnlyBuild:
   scriptHashData:
   - hash:
       serializedVersion: 2
-      Hash: ae83e830e7a90c0aff918c4c2e520825
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: GraphicRaycaster
-  - hash:
-      serializedVersion: 2
       Hash: 699619b86d9359741a4f58540298c80b
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Text
+  - hash:
+      serializedVersion: 2
+      Hash: ae83e830e7a90c0aff918c4c2e520825
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: GraphicRaycaster
   - hash:
       serializedVersion: 2
       Hash: cc4274b586df3c02688bac01b88bd16c
@@ -718,7 +733,7 @@ ScriptsOnlyBuild:
     className: Shadow
   - hash:
       serializedVersion: 2
-      Hash: 80bbc7c13f02a2061cd2c63935ed6911
+      Hash: c8c52bfeba01e8c7175f3339c36179b5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: CustomerSpawner
@@ -838,6 +853,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: ea958dbae430f60babdd6549f92ebf4b
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Critic
+  - hash:
+      serializedVersion: 2
       Hash: 71b711096c6c32621c1d4c02310898b7
     assemblyName: Unity.2D.Animation.Runtime.dll
     namespaceName: UnityEngine.U2D.Animation
@@ -926,12 +947,6 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: BeforeAfterTestCommandState
-  - hash:
-      serializedVersion: 2
-      Hash: 3be8288473226aa4c2c21790199d064e
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: ChangeCharacter
   - hash:
       serializedVersion: 2
       Hash: ae67bb7142663de886511ff84e4c22b8
