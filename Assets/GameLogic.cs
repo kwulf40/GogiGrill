@@ -99,11 +99,11 @@ public class GameLogic : MonoBehaviour
         maxGoodCount.text = maxHappyCount.ToString();
         maxBadCount.text = maxLostCount.ToString();
 
-        if(badLeaveCount == maxLostCount){
+        if(badLeaveCount >= maxLostCount){
             Debug.Log("End Game, lose.");
             hist.LoadScene("Lose");
         }
-        if(goodLeaveCount == maxHappyCount){
+        if(goodLeaveCount >= maxHappyCount){
             Debug.Log("Good Job!");
             if (currentScene.name != "Level3"){
                 hist.LoadScene("LevelComplete");
