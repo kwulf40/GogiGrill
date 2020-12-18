@@ -379,8 +379,8 @@ public class PlayerController : MonoBehaviour
             GameObject chair = tableList[tableNumber].transform.GetChild(0).GetChild(0).gameObject;
             if (chair.transform.childCount == 0){
                 cust.transform.SetParent(chair.transform);
-                cust.transform.position = new Vector3 (chair.transform.position.x, chair.transform.position.y - 0.5f, chair.transform.position.z);
-                cust.transform.GetChild(0).transform.Rotate(new Vector3 (0,-90,0));
+                cust.transform.position = new Vector3 (chair.transform.position.x + 1.1f, chair.transform.position.y -0.44f, chair.transform.position.z);
+                cust.transform.GetChild(0).transform.Rotate(new Vector3 (-40,-90,0));
 
             }
             else{
