@@ -6,6 +6,19 @@ using UnityEngine.UI;
 using UnityEngine.Animations;
 using UnityEngine.SceneManagement;
 
+/*
+* PlayerController.cs for Gogi Grill
+* Made for CSUSM CS 485 Fall 2020 
+* Audio variables and calls all done by Ronalyn Castilla
+* All other code in this and all game files authored by Keegan Wulf
+*
+*
+* KBBCrew:
+* Ronalyn Castilla
+* Neala Mendoza
+* Keegan Wulf
+* Rishi Ramrakhyani
+*/
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
