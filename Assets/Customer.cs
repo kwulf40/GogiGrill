@@ -98,7 +98,7 @@ public class Customer : MonoBehaviour
         leaveTimerText.text = Math.Round(leaveTimer).ToString();
 		leaveTimerBar.fillAmount = leaveTimer / maxLeaveTime;
 
-        if (menu == false && eating == false && destroyed == false && leaving == false){
+        if (menu == false && eating == false && destroyed == false && isLeaving == false){
             leaveTimer = leaveTimer - Time.deltaTime;
         }
         
