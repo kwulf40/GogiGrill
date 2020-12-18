@@ -10,6 +10,8 @@ public class CustomerSpawner : MonoBehaviour
     public Critic fuzzy;
     public PlayerController player;
 
+    private GameObject spawnParent;
+
     private int numOfCust = 1;
     private int custType = 0;
 
@@ -19,14 +21,13 @@ public class CustomerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        spawnParent = GameObject.Find("CustomerSpawner");
     }
 
     void Awake()
     {
         CustomerArrive = GetComponents<AudioSource>()[0];
-        
-
+        spawnParent = GameObject.Find("CustomerSpawner");
     }
     // Update is called once per frame
     void Update()
@@ -35,24 +36,30 @@ public class CustomerSpawner : MonoBehaviour
             player = GameObject.Find("Player").GetComponent<PlayerController>();
             SpawnCritic(player);
             criticSpawn = true;
-        }
+        } 
     }
 
     public void Spawn(){
+        if (spawnParent == null){
+            spawnParent = GameObject.Find("CustomerSpawner");
+        }
+        CustomerArrive = spawnParent.GetComponents<AudioSource>()[0];
         custType = Random.Range(0, 2);
         numOfCust = Random.Range(0, 4);
 
-        Customer newCust = (Customer) Instantiate(newCustomer[custType], transform.position, transform.rotation);
-        newCust.transform.SetParent(transform);
+        GameObject newCust = Instantiate(newCustomer[custType], transform.position, transform.rotation).gameObject;
+        newCust.transform.SetParent(spawnParent.transform);
+        newCust.transform.position = spawnParent.transform.position;
+        Customer newCustScript = newCust.GetComponent<Customer>();
         
         if (numOfCust > 0){
             for (int i = 0; i < numOfCust; i++){
                 int groupRand = Random.Range(0, 3);
                 var newCustGroup = (GameObject) Instantiate(custGroup[groupRand], (transform.position + new Vector3((2+(2*i)),0,0)), transform.rotation);
+                newCustGroup.transform.position = (spawnParent.transform.position + new Vector3((2+(2*i)),0,0));
                 newCustGroup.transform.SetParent(newCust.transform);
             }
-            
-            newCust.setTimers(numOfCust);
+            newCustScript.setTimers(numOfCust);
         }
 		CustomerArrive.Play();
     }

@@ -1190,6 +1190,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1595185996259008102, guid: 80d63f5c664625a4a986348f70da0842, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6427492156435354458, guid: 80d63f5c664625a4a986348f70da0842, type: 3}
       propertyPath: m_Name
       value: CustomerSpawner

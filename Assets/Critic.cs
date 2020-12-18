@@ -89,9 +89,7 @@ public class Critic : MonoBehaviour
         custLeaving.gameObject.SetActive(false);
 		
         //for Sounds
-		//CustomerReadytoOrder = GetComponents<AudioSource>()[0];
-        //CustomerHappy = GetComponents<AudioSource>()[1];
-		//CustomerUnhappy  = GetComponents<AudioSource>()[2];
+		CustomerReadytoOrder = GetComponents<AudioSource>()[0];
     }
 
     // Update is called once per frame
@@ -120,7 +118,7 @@ public class Critic : MonoBehaviour
                 custOrder.gameObject.SetActive(true);
                 order = true;
                 menuTimer = maxMenuTime;
-				//CustomerReadytoOrder.Play();
+				CustomerReadytoOrder.Play();
                 menuToggle();
                 leaveToggle();
                 
@@ -156,6 +154,7 @@ public class Critic : MonoBehaviour
                 eating = false;
                 delay = true;
                 timesEaten++;
+                eatTimer = maxEatTime;
                 eatToggle();
                 leaveToggle();
             }
