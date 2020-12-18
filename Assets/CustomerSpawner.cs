@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public Customer newCustomer;
-    public GameObject custGroup;
+    public Customer[] newCustomer = new Customer[3];
+    public GameObject[] custGroup = new GameObject[3];
 
     private int numOfCust = 1;
+    private int custType = 0;
 	
 	private AudioSource CustomerArrive;
     // Start is called before the first frame update
@@ -27,16 +28,16 @@ public class CustomerSpawner : MonoBehaviour
     }
 
     public void Spawn(){
-        numOfCust = Random.Range(0,3);
+        custType = Random.Range(0, 3);
+        numOfCust = Random.Range(0, 4);
 
-        Customer newCust = Instantiate(newCustomer, transform.position, transform.rotation);
-        newCust.transform.Rotate(new Vector3(0,180,0));
+        Customer newCust = Instantiate(newCustomer[custType], transform.position, transform.rotation);
         newCust.transform.SetParent(transform);
         
         if (numOfCust > 0){
             for (int i = 0; i < numOfCust; i++){
-                var newCustGroup = (GameObject) Instantiate(custGroup, (transform.position + new Vector3((2+(2*i)),0,0)), transform.rotation);
-                newCustGroup.transform.Rotate(new Vector3(0,180,0));
+                int groupRand = Random.Range(0, 3);
+                var newCustGroup = (GameObject) Instantiate(custGroup[groupRand], (transform.position + new Vector3((2+(2*i)),0,0)), transform.rotation);
                 newCustGroup.transform.SetParent(newCust.transform);
             }
             
@@ -45,11 +46,11 @@ public class CustomerSpawner : MonoBehaviour
 		CustomerArrive.Play();
     }
     public void SpawnMobile(){
-        GameObject newMobCust = Instantiate(custGroup, transform.position, transform.rotation);
+        int groupRand = Random.Range(0, 2);
+        GameObject newMobCust = Instantiate(custGroup[groupRand], transform.position, transform.rotation);
         GameObject PickupWindow = GameObject.Find("RightWindowBottom").gameObject;
         newMobCust.transform.SetParent(PickupWindow.transform);
-        newMobCust.transform.position = new Vector3(PickupWindow.transform.position.x, PickupWindow.transform.position.y + 4, PickupWindow.transform.position.z + 1);
-        newMobCust.transform.Rotate(new Vector3(0,180,0));
+        newMobCust.transform.position = new Vector3(PickupWindow.transform.position.x, PickupWindow.transform.position.y, PickupWindow.transform.position.z + 3);
         CustomerArrive.Play();
     }
 }

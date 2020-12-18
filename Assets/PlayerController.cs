@@ -159,12 +159,12 @@ public class PlayerController : MonoBehaviour
         else{
             direction.y -= gravity * Time.deltaTime;
         }
-        
+
         controller.Move(direction * speed *  Time.deltaTime);
         //CHARACTER MOVEMENT SOUND GOES HERE (OPTIONAL)
         
         if (Quaternion.LookRotation(direction).y != 0 || direction.z != 0){//rotates player to the direction they last moved in
-           transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(direction), 4.0f);
+           transform.rotation = Quaternion.Slerp(transform.rotation, (Quaternion.LookRotation(direction * 2)), 4.0f);
         }
         transform.localEulerAngles = new Vector3(0, transform.localEulerAngles.y, transform.localEulerAngles.z);//Prevents the player from rotating while moving
     }
@@ -305,15 +305,25 @@ public class PlayerController : MonoBehaviour
             GameObject chair = tableList[tableNumber].transform.GetChild(0).GetChild(0).gameObject;
             if (chair.transform.childCount == 0){
                 cust.transform.SetParent(chair.transform);
-                cust.transform.position = new Vector3 (chair.transform.position.x, chair.transform.position.y + 2, chair.transform.position.z);
+                cust.transform.position = new Vector3 (chair.transform.position.x, chair.transform.position.y - 0.5f, chair.transform.position.z);
+                cust.transform.GetChild(0).transform.Rotate(new Vector3 (0,-90,0));
                 cust.increaseLeave(10.0f);
 
                 if (cust.transform.childCount > 1){
-                    for (int j = 1; j < cust.transform.childCount; j++){
-                        GameObject groupChair = tableList[tableNumber].transform.GetChild((j)).GetChild(0).gameObject;
+                    int chairNum = 1;
+                    for (int j = 2; j < cust.transform.childCount; j++){
+                        
+                        GameObject groupChair = tableList[tableNumber].transform.GetChild((chairNum)).GetChild(0).gameObject;
                         GameObject group = cust.transform.GetChild(j).gameObject;
 
-                        group.transform.position = new Vector3(groupChair.transform.position.x, groupChair.transform.position.y + 2, groupChair.transform.position.z);
+                        group.transform.position = new Vector3(groupChair.transform.position.x, groupChair.transform.position.y - 0.5f, groupChair.transform.position.z);
+                        chairNum++;
+                        if (j % 2 == 0){
+                            group.transform.Rotate(new Vector3 (0, 90,0));
+                        }
+                        else {
+                            group.transform.Rotate(new Vector3 (0,-90,0));
+                        }
                     }
                 }
             }

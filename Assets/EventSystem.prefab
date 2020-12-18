@@ -1063,7 +1063,7 @@ MonoBehaviour:
   callSpawn:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 6427492156435354456, guid: 80d63f5c664625a4a986348f70da0842, type: 3}
         m_TargetAssemblyTypeName: CustomerSpawner, Assembly-CSharp
         m_MethodName: Spawn
         m_Mode: 1

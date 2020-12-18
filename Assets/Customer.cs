@@ -234,6 +234,6 @@ public class Customer : MonoBehaviour
     }
 
     public void increaseLeave (float time){
-        leaveTimer = leaveTimer + time;
+        this.leaveTimer = this.leaveTimer + time;
     }
 }

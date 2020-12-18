@@ -87,6 +87,7 @@ public class ToGoOrder : MonoBehaviour
         ringing = false;
         alert.gameObject.SetActive(false);
         customerArriving = true;
+        loopTog = false;
         currentRingTime = maxRingTime;
         tablet.GetComponent<MeshRenderer>().material = idleMat;   
     }
