@@ -16,9 +16,12 @@ public class GameLogic : MonoBehaviour
 
     private ToGoOrder tablet;
 
+    private float delay = 3.0f;
+
     private float maxCallTimer = 30.0f;
     private float currentCallTimer = 30.0f;
     private bool sendRing = false;
+    private bool firstSpawn = false;
     private Scene currentScene;
     private Text goodCount;
     private Text maxGoodCount;
@@ -34,7 +37,9 @@ public class GameLogic : MonoBehaviour
         goodLeaveCount = 0;
         customerCount = 0;
         waitTime = UnityEngine.Random.Range(4, 7);
-        callSpawn.Invoke();
+        if (currentScene.name != "Level3"){
+            callSpawn.Invoke();
+        }
         customerCount++;
 
         goodCount = transform.Find("Canvas").Find("background1").Find("happyCount").GetComponent<Text>();
@@ -43,11 +48,18 @@ public class GameLogic : MonoBehaviour
         maxGoodCount = transform.Find("Canvas").Find("background1").Find("maxHappyCount").GetComponent<Text>();
         maxBadCount = transform.Find("Canvas").Find("background2").Find("maxLostCount").GetComponent<Text>();
 
-        if (currentScene.name == "Level2" || currentScene.name == "Level3"){
+        if (currentScene.name == "Level2"){
             tablet = GameObject.Find("ToGoTablet").GetComponent<ToGoOrder>();
 
             maxLostCount = 4;
             maxHappyCount = 8;
+            maxCustomerCount = 6;
+        }
+        else if (currentScene.name == "Level3"){
+            tablet = GameObject.Find("ToGoTablet").GetComponent<ToGoOrder>();
+
+            maxLostCount = 5;
+            maxHappyCount = 100;
             maxCustomerCount = 6;
         }
 
@@ -61,6 +73,11 @@ public class GameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        delay = delay - Time.deltaTime;
+        if (currentScene.name == "Level3" && delay <= 0.0f && firstSpawn == false){
+            spawnCheck();
+            firstSpawn = true;
+        }
         goodCount.text = goodLeaveCount.ToString();
         badCount.text = badLeaveCount.ToString();
         maxGoodCount.text = maxHappyCount.ToString();

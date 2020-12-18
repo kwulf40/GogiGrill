@@ -24,6 +24,8 @@ public class Customer : MonoBehaviour
 
     public int tableNum;
     bool destroyed = false;
+    
+    //GUI
     private Text leaveTimerText;
     private Image leaveTimerBar;
     private Image leaveTimerBack;
@@ -40,8 +42,8 @@ public class Customer : MonoBehaviour
     private Image custOrder;
     private Image custFinished;
 	
+    //Audio
 	private AudioSource CustomerReadytoOrder;
-
     private AudioSource CustomerHappy;
 	private AudioSource CustomerUnhappy;
 
@@ -99,6 +101,7 @@ public class Customer : MonoBehaviour
         if (menu == false && eating == false && destroyed == false){
             leaveTimer = leaveTimer - Time.deltaTime;
         }
+        
         if (menu == true){
             if (leaveTimerText.gameObject.activeSelf == true){
                 leaveToggle();

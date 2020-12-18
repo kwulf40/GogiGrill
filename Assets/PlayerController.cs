@@ -96,6 +96,8 @@ public class PlayerController : MonoBehaviour
             customerOrder(objects);
             customerCheck(objects);
             pickupPhone(objects);
+            criticOrder(objects);
+            criticCheck(objects);
         }
 
         if (Input.GetKeyDown(KeyCode.L)){
@@ -189,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
     void customerSeat(Collider[] objects){
         foreach(Collider newObject in objects){
-            if (newObject.tag == "Customer"){
+            if (newObject.tag == "Customer" && newObject.name != "Fuzzypaws(Clone)"){
                 if(newObject.gameObject.GetComponent<Customer>().isSeated == false){
                     seatCust(newObject.gameObject.GetComponent<Customer>());
                     Debug.Log("Seat");
@@ -218,6 +220,26 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void criticOrder(Collider[] objects){
+        foreach(Collider newObject in objects){
+            if (newObject.tag == "Customer" && newObject.name == "Fuzzypaws(Clone)"){
+                if(newObject.gameObject.GetComponent<Critic>()){
+                    Critic checkCust = newObject.gameObject.GetComponent<Critic>();
+                    if(checkCust.order == true){
+                        customerOrderGet.Invoke();
+                        Debug.Log("Order");
+                        if (heldItem){
+                            heldItem.tableNum = checkCust.tableNum;
+                            Debug.Log(checkCust.tableNum.ToString());
+                        }
+                        checkCust.order = false;
+                        checkCust.readyToEat = true;
+                    }
+                }
+            }
+        }
+    }
+
     void customerCheck(Collider[] objects){
         foreach(Collider newObject in objects){
             if (newObject.tag == "Customer"){
@@ -230,6 +252,20 @@ public class PlayerController : MonoBehaviour
                         happyAudio.Play();
                         Destroy(newObject.gameObject, happyAudio.clip.length);
                         goodLeave.Invoke();
+                    }
+                }
+            }
+        }
+    }
+
+    void criticCheck(Collider[] objects){
+        foreach(Collider newObject in objects){
+            if (newObject.tag == "Customer" && newObject.name == "Fuzzypaws(Clone)"){
+                if(newObject.gameObject.GetComponent<Critic>()){
+                    Critic checkCust = newObject.gameObject.GetComponent<Critic>();
+                    if (checkCust.checkReady == true){
+                        Debug.Log("winner");
+                        checkCust.isLeaving = true;
                     }
                 }
             }
@@ -336,6 +372,24 @@ public class PlayerController : MonoBehaviour
         cust.isSeated = true;
         //PLAYER SEATING CUSTOMER SOUND GOES HERE (OPTIONAL)
 		seatingSound.Play();
+    }
+
+    public void seatCritic(Critic cust){
+        while (cust.transform.parent == null || cust.transform.parent.name == "CustomerSpawner"){
+            GameObject chair = tableList[tableNumber].transform.GetChild(0).GetChild(0).gameObject;
+            if (chair.transform.childCount == 0){
+                cust.transform.SetParent(chair.transform);
+                cust.transform.position = new Vector3 (chair.transform.position.x, chair.transform.position.y - 0.5f, chair.transform.position.z);
+                cust.transform.GetChild(0).transform.Rotate(new Vector3 (0,-90,0));
+
+            }
+            else{
+                tableNumber = UnityEngine.Random.Range(0, 15);
+            } 
+        }
+        cust.setTableNum((tableNumber + 1));
+        cust.menu = true; 
+        cust.isSeated = true;
     }
 }
 

@@ -52,6 +52,8 @@ MonoBehaviour:
   - {fileID: 2749520504508410013, guid: 3c645860562a6924fb1e9aebeb64de65, type: 3}
   - {fileID: 2010875103527337021, guid: 8b81f53da461fad4b92f9fb01a43c0a3, type: 3}
   - {fileID: 4239346213510469518, guid: 4f3d5fca7eba2264897a62b71dbd7109, type: 3}
+  fuzzy: {fileID: 988026374040917582, guid: 577cdd9d2709cac4491a213058b0ee86, type: 3}
+  player: {fileID: 0}
 --- !u!82 &-1595185996259008102
 AudioSource:
   m_ObjectHideFlags: 0
